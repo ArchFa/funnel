@@ -29,9 +29,10 @@ if but:
             'Content-Type': 'application/x-yametrika+json',
             'Authorization': 'OAuth AQAEA7qjKZXKAAfhX_j1dIIUR059lNONgVpbkWk'
         }
-
         metrika_url = f'https://api.appmetrica.yandex.ru/logs/v1/export/events.json?application_id=4065523&date_since={start_day}%2000%3A00%3A00&date_until={end_day}%2023%3A59%3A59&date_dimension=default&use_utf8_bom=true&fields=appmetrica_device_id%2Ccity%2Cevent_name'
 
+        st.spinner('Wait for it...')
+        
         res = r.get(metrika_url, headers=header)
         if res.status_code == 200:
             items = json.loads(res.text.lstrip('\ufeff'))
