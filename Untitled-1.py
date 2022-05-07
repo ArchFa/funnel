@@ -21,11 +21,10 @@ end_day = st.date_input(
 st.write('Воронка до', end_day, 'числа')
 
 # %%
+button = st.button("Загрузить данные")
 
-
-if st.button('Загруить данные'):
-     st.write('Данные загружаются')
-     while True:
+if button:
+    while True:
         header={
             'Content-Type': 'application/x-yametrika+json',
             'Authorization': 'OAuth AQAEA7qjKZXKAAfhX_j1dIIUR059lNONgVpbkWk'
@@ -34,14 +33,11 @@ if st.button('Загруить данные'):
         metrika_url = f'https://api.appmetrica.yandex.ru/logs/v1/export/events.json?application_id=4065523&date_since={start_day}%2000%3A00%3A00&date_until={end_day}%2023%3A59%3A59&date_dimension=default&use_utf8_bom=true&fields=appmetrica_device_id%2Ccity%2Cevent_name'
 
         res = r.get(metrika_url, headers=header)
-        st.spinner('Wait for it...')
         if res.status_code == 200:
             items = json.loads(res.text.lstrip('\ufeff'))
             df = pd.DataFrame.from_dict(items['data'])
             st.write(df)
             break
         time.sleep(300)
-else:
-     st.write('Нажмите для загрузки данны')
 
 
