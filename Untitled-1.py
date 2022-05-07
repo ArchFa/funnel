@@ -21,9 +21,9 @@ end_day = st.date_input(
 st.write('Воронка до', end_day, 'числа')
 
 # %%
-button = st.button("Загрузить данные")
+but = st.button("Загрузить данные")
 
-if button:
+if but:
     while True:
         header={
             'Content-Type': 'application/x-yametrika+json',
