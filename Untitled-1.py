@@ -60,7 +60,13 @@ df.info()
 # )
 
 # %%
-options = st.multiselect('What are your favorite colors',df.event_name.unique().tolist())
-st.write('You selected:', options)
+first_step = st.multiselect('Выберите событие для первого шага',df.event_name.unique().tolist())
+second_step = st.multiselect('Выберите событие для второго шага',df.event_name.unique().tolist())
+third_step = st.multiselect('Выберите событие для третьего шага',df.event_name.unique().tolist())
+fourth_step = st.multiselect('Выберите событие для четвертого шага',df.event_name.unique().tolist())
+fifth_step = st.multiselect('Выберите событие для пятого шага',df.event_name.unique().tolist())
+sixth_step = st.multiselect('Выберите событие для шестого шага',df.event_name.unique().tolist())
+seventh_step = st.multiselect('Выберите событие для седьмого шага',df.event_name.unique().tolist())
+
 
 
